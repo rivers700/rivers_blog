@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { getAllPosts, getPostBySlug, categoryConfig, techSubCategoryConfig } from '@/lib/posts';
+import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { categoryConfig, techSubCategoryConfig } from '@/lib/categories';
 import { formatDate } from '@/lib/utils';
 import { Metadata } from 'next';
 import Link from 'next/link';

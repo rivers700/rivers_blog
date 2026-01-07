@@ -1,4 +1,5 @@
-import { getPostsByCategory, categoryConfig, getTechSubCategories, getTechSubCategoryConfig } from '@/lib/posts';
+import { getPostsByCategory, getTechSubCategories, getTechSubCategoryConfig } from '@/lib/posts';
+import { categoryConfig } from '@/lib/categories';
 import { PostCard } from '@/components/PostCard';
 import Link from 'next/link';
 

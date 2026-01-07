@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { PostMeta, categoryConfig, techSubCategoryConfig } from '@/lib/posts';
+import { PostMeta } from '@/lib/posts';
+import { categoryConfig, techSubCategoryConfig } from '@/lib/categories';
 import { formatDate } from '@/lib/utils';
 
 interface PostCardProps {

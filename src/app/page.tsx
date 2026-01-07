@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { getAllPosts, categoryConfig, PostCategory } from '@/lib/posts';
+import { getAllPosts } from '@/lib/posts';
+import { categoryConfig, PostCategory } from '@/lib/categories';
 import { PostCard } from '@/components/PostCard';
 
 // 使用 ISR（增量静态再生成），每 60 秒重新验证

@@ -11,44 +11,22 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
 import { getReadingTime } from './utils';
+import { 
+  categoryConfig, 
+  techSubCategoryConfig, 
+  defaultTechSubCategories,
+  type PostCategory,
+  type TechSubCategory 
+} from './categories';
+
+// 重新导出类型和配置，保持向后兼容
+export { categoryConfig, techSubCategoryConfig };
+export type { PostCategory, TechSubCategory };
 
 const contentDirectory = path.join(process.cwd(), 'content');
 const configPath = path.join(contentDirectory, 'categories.json');
 
-// 主分类
-export type PostCategory = 'tech' | 'life' | 'tools';
-
-// 技术子分类（动态）
-export type TechSubCategory = string;
-
-// 分类配置
-export const categoryConfig: Record<PostCategory, { name: string; description: string; icon: string }> = {
-  tech: {
-    name: '技术分享',
-    description: '编程技巧、开发经验、技术探索',
-    icon: '💻',
-  },
-  life: {
-    name: '生活随笔',
-    description: '日常感悟、读书笔记、成长记录',
-    icon: '🌱',
-  },
-  tools: {
-    name: '实用工具',
-    description: '效率工具、开发资源、实用技巧',
-    icon: '🛠️',
-  },
-};
-
-// 默认技术子分类配置
-const defaultTechSubCategories = [
-  { value: 'frontend', label: '前端开发', icon: '🎨' },
-  { value: 'backend', label: '后端开发', icon: '⚙️' },
-  { value: 'ai', label: 'AI / 机器学习', icon: '🤖' },
-  { value: 'other', label: '其他技术', icon: '📚' },
-];
-
-// 获取动态分类配置
+// 获取动态分类配置（仅服务端使用）
 export function getTechSubCategories(): Array<{ value: string; label: string; icon: string }> {
   try {
     if (fs.existsSync(configPath)) {
@@ -62,7 +40,7 @@ export function getTechSubCategories(): Array<{ value: string; label: string; ic
   return defaultTechSubCategories;
 }
 
-// 技术子分类配置（兼容旧代码）
+// 技术子分类配置（仅服务端使用）
 export function getTechSubCategoryConfig(): Record<string, { name: string; icon: string }> {
   const categories = getTechSubCategories();
   return categories.reduce((acc, cat) => {
@@ -70,9 +48,6 @@ export function getTechSubCategoryConfig(): Record<string, { name: string; icon:
     return acc;
   }, {} as Record<string, { name: string; icon: string }>);
 }
-
-// 导出静态配置（兼容）
-export const techSubCategoryConfig = getTechSubCategoryConfig();
 
 export interface Post {
   slug: string;
