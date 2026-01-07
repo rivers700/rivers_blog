@@ -1,0 +1,24 @@
+{
+  "techSubCategories": [
+    {
+      "value": "frontend",
+      "label": "前端开发",
+      "icon": "🎨"
+    },
+    {
+      "value": "backend",
+      "label": "后端开发",
+      "icon": "⚙️"
+    },
+    {
+      "value": "ai",
+      "label": "AI / 机器学习",
+      "icon": "🤖"
+    },
+    {
+      "value": "other",
+      "label": "其他技术",
+      "icon": "📚"
+    }
+  ]
+}
