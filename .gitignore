@@ -11,6 +11,9 @@
 /.next/
 /out/
 
+# Analysis documents (internal use only)
+PROJECT_OPTIMIZATION_ANALYSIS.md
+
 # Production
 /build
 
