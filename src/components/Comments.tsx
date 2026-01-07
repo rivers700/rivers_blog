@@ -10,12 +10,11 @@ interface CommentsProps {
   categoryId?: string;
 }
 
-// ⚠️ 请替换为你的 Giscus 配置（从 https://giscus.app/zh-CN 获取）
 const GISCUS_CONFIG = {
-  repo: 'your-username/your-repo',        // 替换为: rivers700/dajiangdongqu-blog
-  repoId: 'your-repo-id',                 // 替换为: 从 giscus.app 获取的 repoId
-  category: 'Announcements',              // 替换为: 你选择的分类名
-  categoryId: 'your-category-id',         // 替换为: 从 giscus.app 获取的 categoryId
+  repo: 'rivers700/rivers_blog',
+  repoId: 'R_kgDOQuKvJA',
+  category: 'Announcements',
+  categoryId: 'DIC_kwDOQuKvJM4C0q_R',
 };
 
 export function Comments({
