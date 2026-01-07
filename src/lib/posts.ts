@@ -82,6 +82,7 @@ export interface Post {
   tags?: string[];
   category: PostCategory;
   subCategory?: TechSubCategory;
+  coverImage?: string;
   contentHtml: string;
   readingTime: number;
 }
@@ -94,6 +95,7 @@ export interface PostMeta {
   tags?: string[];
   category: PostCategory;
   subCategory?: TechSubCategory;
+  coverImage?: string;
   readingTime: number;
 }
 
@@ -199,6 +201,7 @@ export function getAllPosts(): PostMeta[] {
       tags: data.tags || [],
       category: (data.category as PostCategory) || category,
       subCategory: (data.subCategory as TechSubCategory) || subCategory,
+      coverImage: data.coverImage || data.cover || undefined,
       readingTime: getReadingTime(fileContents),
     };
   });
@@ -259,6 +262,7 @@ export function getPostBySlug(slug: string): Post | null {
           tags: data.tags || [],
           category: (data.category as PostCategory) || category,
           subCategory: (data.subCategory as TechSubCategory) || subCategory,
+          coverImage: data.coverImage || data.cover || undefined,
           contentHtml: processedContent,
           readingTime: getReadingTime(content),
         };

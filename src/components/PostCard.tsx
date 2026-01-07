@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { PostMeta, categoryConfig, techSubCategoryConfig } from '@/lib/posts';
 import { formatDate } from '@/lib/utils';
 
@@ -15,13 +16,25 @@ export function PostCard({ post, featured = false, showCategory = true }: PostCa
   return (
     <article className={`group ${featured ? 'card-hover p-6' : ''}`}>
       <Link href={`/posts/${post.slug}`} className="block">
+        {/* 封面图 */}
+        {post.coverImage && (
+          <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        )}
+
         {/* 日期、分类和阅读时间 */}
         <div className="flex items-center gap-3 text-sm text-neutral-500 dark:text-neutral-500 mb-3 flex-wrap">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
           {showCategory && category && (
             <>
               <span>·</span>
-              <span className="inline-flex items-center gap-1">
+              <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium category-tag-${post.category}`}>
                 <span>{category.icon}</span>
                 <span>{category.name}</span>
               </span>
@@ -29,7 +42,6 @@ export function PostCard({ post, featured = false, showCategory = true }: PostCa
           )}
           {showCategory && subCategory && (
             <>
-              <span>·</span>
               <span className="inline-flex items-center gap-1">
                 <span>{subCategory.icon}</span>
                 <span>{subCategory.name}</span>

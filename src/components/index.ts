@@ -6,6 +6,7 @@ export { PostCard, PostCardCompact } from './PostCard';
 export { SearchDialog } from './SearchDialog';
 export { ReadingProgress } from './ReadingProgress';
 export { TableOfContents } from './TableOfContents';
+export { MobileToc } from './MobileToc';
 export { ShareButtons } from './ShareButtons';
 export { RelatedPosts } from './RelatedPosts';
 export { Comments } from './Comments';

@@ -24,16 +24,36 @@ export default function HomePage() {
 
   return (
     <div className="container-narrow py-16 md:py-24">
-      {/* Hero Section */}
-      <section className="mb-16 md:mb-20 animate-in">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-          <span className="gradient-text">大江东去</span>
-        </h1>
-        <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl">
-          浪淘尽，千古风流人物。
-          <br />
-          技术探索、生活感悟、实用工具，皆在此处。
-        </p>
+      {/* Hero Section with Background Pattern */}
+      <section className="relative mb-16 md:mb-20 animate-in">
+        {/* 动态背景图案 */}
+        <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -top-10 -right-10 w-56 h-56 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-20 left-1/2 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        
+        <div className="relative">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
+            <span className="hero-gradient-text">大江东去</span>
+          </h1>
+          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl">
+            浪淘尽，千古风流人物。
+            <br />
+            技术探索、生活感悟、实用工具，皆在此处。
+          </p>
+          
+          {/* 快捷操作 */}
+          <div className="flex flex-wrap gap-3 mt-8">
+            <Link href="/posts" className="btn-primary">
+              浏览文章
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <Link href="/about" className="btn-secondary">
+              了解更多
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* 分类入口 */}
@@ -46,7 +66,7 @@ export default function HomePage() {
               <Link
                 key={key}
                 href={href}
-                className="card-hover p-5 group"
+                className={`card-hover p-5 group category-card-${key}`}
               >
                 <div className="flex items-start justify-between mb-3">
                   <span className="text-3xl">{config.icon}</span>

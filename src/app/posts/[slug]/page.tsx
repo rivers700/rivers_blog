@@ -3,8 +3,10 @@ import { getAllPosts, getPostBySlug, categoryConfig, techSubCategoryConfig } fro
 import { formatDate } from '@/lib/utils';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { TableOfContents } from '@/components/TableOfContents';
+import { MobileToc } from '@/components/MobileToc';
 import { ShareButtons } from '@/components/ShareButtons';
 import { PostCardCompact } from '@/components/PostCard';
 import { CodeBlockWrapper } from '@/components/CodeBlockWrapper';
@@ -105,6 +107,7 @@ export default async function PostPage({ params }: PostPageProps) {
     <>
       <ReadingProgress />
       <TableOfContents />
+      <MobileToc />
 
       <article className="container-narrow py-16 md:py-24">
         {/* 返回链接 */}
@@ -118,6 +121,19 @@ export default async function PostPage({ params }: PostPageProps) {
           {backLabel}
         </Link>
 
+        {/* 封面图 */}
+        {post.coverImage && (
+          <div className="relative w-full aspect-video mb-8 rounded-xl overflow-hidden">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
+
         {/* 文章头部 */}
         <header className="mb-12 animate-in">
           {/* 分类和标签 */}
@@ -125,7 +141,7 @@ export default async function PostPage({ params }: PostPageProps) {
             {category && (
               <Link 
                 href={`/${post.category}`}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg transition-colors category-tag-${post.category}`}
               >
                 <span>{category.icon}</span>
                 <span>{category.name}</span>
